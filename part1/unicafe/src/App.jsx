@@ -4,6 +4,20 @@ const Button = ({ onClick, text }) => {
   return <button onClick={onClick}>{text}</button>;
 };
 
+const Statistics = (props) => {
+  return (
+    <div>
+      <h1>Statistics</h1>
+      <p>Good: {props.good}</p>
+      <p>Neutral: {props.neutral}</p>
+      <p>Bad: {props.bad}</p>
+      <p>Total: {props.all}</p>
+      <p>Average score: {props.average}</p>
+      <p>Positive feedback: {props.positive}%</p>
+    </div>
+  );
+};
+
 const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
@@ -50,15 +64,14 @@ const App = () => {
         <Button onClick={handleNeutralFeedback} text="Neutral" />
         <Button onClick={handleBadFeedback} text="Bad" />
       </div>
-      <div>
-        <h1>Statistics</h1>
-        <p>Good: {good}</p>
-        <p>Neutral: {neutral}</p>
-        <p>Bad: {bad}</p>
-        <p>Total: {all}</p>
-        <p>Average score: {average}</p>
-        <p>Positive feedback: {positive}%</p>
-      </div>
+      <Statistics
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        all={all}
+        average={average}
+        positive={positive}
+      />
     </>
   );
 };
